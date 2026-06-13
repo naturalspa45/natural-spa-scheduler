@@ -1,0 +1,41 @@
+name: Natural Spa Publisher
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'   # Cada 30 minutos
+  workflow_dispatch:           # Boton manual en GitHub
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run publisher
+        env:
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_IG_ID: ${{ secrets.META_IG_ID }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+        run: python publisher.py
+
+      - name: Commit status updates
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "Natural Spa Bot"
+          git add semana/
+          git diff --staged --quiet || git commit -m "Auto: actualizar estado publicacion"
+          git push
