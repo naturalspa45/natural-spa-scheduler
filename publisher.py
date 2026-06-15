@@ -7,11 +7,12 @@ programa posts de Facebook y publica en Instagram + Historias.
 import os, json, time, imaplib, email, datetime, requests
 
 # === CONFIGURACION ===
-PAGE_TOKEN = os.environ.get('META_PAGE_TOKEN', '')
-PAGE_ID    = os.environ.get('META_PAGE_ID', '')
-IG_ID      = os.environ.get('META_IG_ID', '')
-GMAIL_USER = os.environ.get('GMAIL_USER', 'esteticanaturaspa@gmail.com')
-GMAIL_PWD  = os.environ.get('GMAIL_APP_PASSWORD', '')
+def _clean(s): return (s or '').strip().strip('﻿').strip()
+PAGE_TOKEN = _clean(os.environ.get('META_PAGE_TOKEN', ''))
+PAGE_ID    = _clean(os.environ.get('META_PAGE_ID', ''))
+IG_ID      = _clean(os.environ.get('META_IG_ID', ''))
+GMAIL_USER = _clean(os.environ.get('GMAIL_USER', 'esteticanaturaspa@gmail.com'))
+GMAIL_PWD  = _clean(os.environ.get('GMAIL_APP_PASSWORD', ''))
 VERSION    = "v23.0"
 REPO       = "naturalspa45/natural-spa-scheduler"
 RAW_BASE   = f"https://raw.githubusercontent.com/{REPO}/main"
@@ -34,10 +35,13 @@ def now_ts():
 def check_gmail_si(semana):
     """Busca en el inbox de Gmail si llegó un SI como respuesta al email de aprobacion."""
     try:
+        semana_clean = semana.encode('ascii', errors='replace').decode('ascii')
         mail = imaplib.IMAP4_SSL('imap.gmail.com', 993)
         mail.login(GMAIL_USER, GMAIL_PWD)
         mail.select('inbox')
-        _, nums = mail.search(None, 'SUBJECT', f'semana {semana}')
+        # Buscar mensajes recientes (ultimos 7 dias) con "Natural Spa" en asunto
+        since_date = (datetime.datetime.utcnow() - datetime.timedelta(days=7)).strftime('%d-%b-%Y')
+        _, nums = mail.search(None, f'SINCE {since_date} SUBJECT "Natural Spa"')
         for n in nums[0].split():
             _, data = mail.fetch(n, '(RFC822)')
             msg = email.message_from_bytes(data[0][1])
@@ -48,7 +52,6 @@ def check_gmail_si(semana):
                         body += part.get_payload(decode=True).decode('utf-8', errors='ignore')
             else:
                 body = msg.get_payload(decode=True).decode('utf-8', errors='ignore')
-            # La respuesta debe ser SI (sola o acompañada) en las primeras letras
             if body.strip()[:10].upper().startswith('SI'):
                 mail.logout()
                 return True
