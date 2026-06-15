@@ -126,11 +126,31 @@ def is_video(url):
     return url.lower().split('?')[0].endswith(('.mp4', '.mov', '.avi', '.webm'))
 
 
-def schedule_fb_video(video_url, message, ts_fb):
-    """Programa un video en Facebook usando el endpoint /videos."""
+def ensure_local(local_path, raw_url):
+    """Garantiza que el archivo exista localmente. Si no, lo descarga del raw URL de GitHub."""
+    if os.path.exists(local_path) and os.path.getsize(local_path) > 1000:
+        return local_path
+    print(f"  Descargando desde GitHub: {os.path.basename(local_path)} ...")
+    try:
+        r = requests.get(raw_url, stream=True, timeout=120)
+        if r.ok:
+            os.makedirs(os.path.dirname(local_path) or '.', exist_ok=True)
+            with open(local_path, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=65536):
+                    f.write(chunk)
+            size_kb = os.path.getsize(local_path) // 1024
+            print(f"  Descargado OK: {size_kb} KB")
+            return local_path
+        print(f"  Download error {r.status_code}: {r.text[:100]}")
+    except Exception as ex:
+        print(f"  ensure_local error: {ex}")
+    return None
+
+
+def schedule_fb_video(video_src, message, ts_fb):
+    """Programa un video en Facebook. video_src puede ser ruta local o URL."""
     try:
         body = {
-            'file_url': video_url,
             'description': message,
             'access_token': PAGE_TOKEN,
         }
@@ -139,7 +159,16 @@ def schedule_fb_video(video_url, message, ts_fb):
             body['scheduled_publish_time'] = str(ts_fb)
         else:
             body['published'] = 'true'
-        r = requests.post(f"https://graph.facebook.com/{VERSION}/{PAGE_ID}/videos", data=body)
+        if video_src.startswith('http'):
+            body['file_url'] = video_src
+            r = requests.post(f"https://graph.facebook.com/{VERSION}/{PAGE_ID}/videos", data=body)
+        else:
+            with open(video_src, 'rb') as vf:
+                r = requests.post(
+                    f"https://graph.facebook.com/{VERSION}/{PAGE_ID}/videos",
+                    data=body,
+                    files={'source': (os.path.basename(video_src), vf, 'video/mp4')}
+                )
         if r.ok:
             return r.json().get('id')
         print(f"  FB video error: {r.text[:200]}")
@@ -249,8 +278,8 @@ def main():
     for entry in entries:
         tipo = entry.get('tipo', 'feed')
         repo_path = entry.get('imagen_repo_path', '')
-        local_img = f"semana/imagenes/{os.path.basename(repo_path)}" if repo_path else ''
-        raw_url   = f"{RAW_BASE}/semana/imagenes/{os.path.basename(repo_path)}" if repo_path else ''
+        local_img = repo_path if repo_path else ''
+        raw_url   = f"{RAW_BASE}/{repo_path}" if repo_path else ''
 
         if tipo == 'feed':
             formato = entry.get('formato', 'IMAGEN UNICA').upper()
@@ -262,10 +291,10 @@ def main():
                 msg = get_caption(entry, 'fb')
                 ts_fb = int(entry.get('timestamp_fb', 0))
                 if es_video:
-                    src = local_img if os.path.exists(local_img) else raw_url
-                    fb_id = schedule_fb_video(src, msg, ts_fb)
+                    src = ensure_local(local_img, raw_url)
+                    fb_id = schedule_fb_video(src, msg, ts_fb) if src else None
                 else:
-                    src = local_img if os.path.exists(local_img) else raw_url
+                    src = ensure_local(local_img, raw_url) or raw_url
                     photo_id, cdn_url = upload_image_to_fb(src)
                     fb_id = schedule_fb_post(msg, photo_id, ts_fb) if photo_id else None
                     if photo_id:

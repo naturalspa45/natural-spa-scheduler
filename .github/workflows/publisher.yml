@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          lfs: false
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -25,6 +27,7 @@ jobs:
 
       - name: Run publisher
         env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
           META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
           META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
           META_IG_ID: ${{ secrets.META_IG_ID }}
