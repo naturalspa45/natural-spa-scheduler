@@ -1,4 +1,4 @@
-"""
+﻿"""
 Natural Spa - Publicador Automatico desde GitHub Actions
 Corre cada 30 minutos. Verifica aprobacion en Gmail,
 programa posts de Facebook y publica en Instagram + Historias.
@@ -183,7 +183,7 @@ def main():
         print("Sin parrilla esta semana. Nada que hacer.")
         return
 
-    with open('semana/parrilla.json', 'r', encoding='utf-8') as f:
+    with open('semana/parrilla.json', 'r', encoding='utf-8-sig') as f:
         entries = json.load(f)
     if not isinstance(entries, list):
         entries = [entries]
@@ -192,7 +192,7 @@ def main():
     aprobacion_path = 'semana/aprobacion.json'
     aprobacion = {'aprobada': False, 'semana': ''}
     if os.path.exists(aprobacion_path):
-        with open(aprobacion_path, 'r') as f:
+        with open(aprobacion_path, 'r', encoding='utf-8-sig') as f:
             aprobacion = json.load(f)
 
     semana = aprobacion.get('semana', '')
@@ -281,3 +281,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
