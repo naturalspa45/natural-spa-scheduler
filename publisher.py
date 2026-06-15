@@ -122,12 +122,43 @@ def schedule_fb_post(message, photo_id, ts_fb):
     return None
 
 
-def create_ig_container(image_url, caption=None, media_type='IMAGE'):
+def is_video(url):
+    return url.lower().split('?')[0].endswith(('.mp4', '.mov', '.avi', '.webm'))
+
+
+def schedule_fb_video(video_url, message, ts_fb):
+    """Programa un video en Facebook usando el endpoint /videos."""
+    try:
+        body = {
+            'file_url': video_url,
+            'description': message,
+            'access_token': PAGE_TOKEN,
+        }
+        if ts_fb > now_ts() + 600:
+            body['published'] = 'false'
+            body['scheduled_publish_time'] = str(ts_fb)
+        else:
+            body['published'] = 'true'
+        r = requests.post(f"https://graph.facebook.com/{VERSION}/{PAGE_ID}/videos", data=body)
+        if r.ok:
+            return r.json().get('id')
+        print(f"  FB video error: {r.text[:200]}")
+    except Exception as ex:
+        print(f"  schedule_fb_video error: {ex}")
+    return None
+
+
+def create_ig_container(media_url, caption=None, media_type='IMAGE'):
     """Crea un contenedor de media en Instagram."""
     try:
-        data = {'image_url': image_url, 'media_type': media_type, 'access_token': PAGE_TOKEN}
+        if media_type in ('REELS', 'STORIES') and is_video(media_url):
+            data = {'video_url': media_url, 'media_type': media_type, 'access_token': PAGE_TOKEN}
+        else:
+            data = {'image_url': media_url, 'media_type': media_type, 'access_token': PAGE_TOKEN}
         if caption:
             data['caption'] = caption
+        if media_type == 'REELS':
+            data['share_to_feed'] = 'true'
         r = requests.post(f"https://graph.facebook.com/{VERSION}/{IG_ID}/media", data=data)
         if r.ok:
             return r.json().get('id')
@@ -222,31 +253,40 @@ def main():
         raw_url   = f"{RAW_BASE}/semana/imagenes/{os.path.basename(repo_path)}" if repo_path else ''
 
         if tipo == 'feed':
+            formato = entry.get('formato', 'IMAGEN UNICA').upper()
+            es_video = is_video(raw_url)
+
             # --- FACEBOOK (una sola vez) ---
             if not entry.get('fb_programado') and repo_path:
                 print(f"Programando FB: {entry.get('dia')} {entry.get('hora_fb_col', '')} COL")
-                src = local_img if os.path.exists(local_img) else raw_url
-                photo_id, cdn_url = upload_image_to_fb(src)
-                if photo_id:
-                    msg = get_caption(entry, 'fb')
-                    fb_id = schedule_fb_post(msg, photo_id, int(entry.get('timestamp_fb', 0)))
-                    if fb_id:
-                        entry['fb_programado'] = True
-                        entry['fb_post_id']    = fb_id
+                msg = get_caption(entry, 'fb')
+                ts_fb = int(entry.get('timestamp_fb', 0))
+                if es_video:
+                    src = local_img if os.path.exists(local_img) else raw_url
+                    fb_id = schedule_fb_video(src, msg, ts_fb)
+                else:
+                    src = local_img if os.path.exists(local_img) else raw_url
+                    photo_id, cdn_url = upload_image_to_fb(src)
+                    fb_id = schedule_fb_post(msg, photo_id, ts_fb) if photo_id else None
+                    if photo_id:
                         entry['fb_url_imagen'] = cdn_url
-                        changed = True
-                        print(f"  FB programado OK: {fb_id}")
+                if fb_id:
+                    entry['fb_programado'] = True
+                    entry['fb_post_id']    = fb_id
+                    changed = True
+                    print(f"  FB programado OK: {fb_id}")
 
-            # --- INSTAGRAM: crear contenedor 2h antes ---
-            if not entry.get('ig_publicado') and entry.get('fb_programado'):
+            # --- INSTAGRAM: crear contenedor 2h antes (independiente de FB) ---
+            if not entry.get('ig_publicado'):
                 ts_ig = int(entry.get('timestamp_ig', 0))
                 if not entry.get('ig_container_id') and now >= ts_ig - 7200 and raw_url:
                     caption = get_caption(entry, 'ig')
-                    cid = create_ig_container(raw_url, caption)
+                    ig_type = 'REELS' if es_video else 'IMAGE'
+                    cid = create_ig_container(raw_url, caption, ig_type)
                     if cid:
                         entry['ig_container_id'] = cid
                         changed = True
-                        print(f"  IG contenedor creado: {cid}")
+                        print(f"  IG contenedor creado ({ig_type}): {cid}")
 
                 # Publicar cuando llegue la hora
                 if entry.get('ig_container_id') and now >= ts_ig:
