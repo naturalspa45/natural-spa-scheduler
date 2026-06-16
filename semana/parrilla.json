@@ -29,7 +29,8 @@
     "publicado": false,
     "imagen_repo_path": "semana/imagenes/post1.mp4",
     "fb_programado": true,
-    "fb_post_id": "1607736128025112"
+    "fb_post_id": "1607736128025112",
+    "ig_container_id": "18447625342137444"
   },
   {
     "orden": 2,
@@ -155,7 +156,8 @@
     "hashtags": "",
     "imagen_path": "E:\\PLANTILLAS IA\\FACIAL\\HISTORY\\2026-06-12-FACIAL-1.png",
     "publicado": false,
-    "imagen_repo_path": "semana/imagenes/historia_martes.png"
+    "imagen_repo_path": "semana/imagenes/historia_martes.png",
+    "ig_story_publicado": true
   },
   {
     "orden": 99,
