@@ -63,7 +63,10 @@
     "imagen_path": "E:\\ARCHIVOS\\plantillas\\-2 micro\\#43.png",
     "publicado": false,
     "imagen_repo_path": "semana/imagenes/post2.png",
-    "fb_programado": false
+    "fb_programado": true,
+    "fb_url_imagen": "https://scontent-sjc6-1.xx.fbcdn.net/v/t39.30808-6/726420908_1593963329403351_8873007686234398067_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=054031&_nc_eui2=AeHVDlxVUZZkXN6t1IXc7JXT9zsKywe9zJT3OwrLB73MlGJGqCGxotuk2bq4aU0SlnEjeXZpk00UkgYo-5bKe_KS&_nc_ohc=5w85I1AJQkwQ7kNvwH9UCsy&_nc_oc=AdoXnx7TJjWeUcoavKI3XM815sRzkznpuwMCoGij3nnjqRtYusSepER_-Caz2f_wI0k&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AMAeTUEEAAAA&_nc_gid=gEccQ8RfwxSVbmrf6tpxJQ&_nc_tpa=Q5bMBQEAPJFYt7H5faCSXVbmhRxcRqhEUxn0jZ-BvBjNn2BJv4_zpkVUHqLfkSMoj5pCz5NiRBX45DqPJg&oh=00_Af_1dTlK-uX_VfnCaYP4k_y6V2Aaif-BFigAnqBl-Z8rUg&oe=6A390C43",
+    "fb_post_id": "1993115404238126_1593963402736677",
+    "ig_container_id": "18447838942137444"
   },
   {
     "orden": 3,
@@ -94,7 +97,9 @@
     "imagen_path": "E:\\ARCHIVOS\\plantillas\\-4 depilacion\\#6.png",
     "publicado": false,
     "imagen_repo_path": "semana/imagenes/post3.png",
-    "fb_programado": false
+    "fb_programado": true,
+    "fb_url_imagen": "https://scontent-sjc6-1.xx.fbcdn.net/v/t39.30808-6/726457861_1593963469403337_902262926676839744_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=054031&_nc_eui2=AeFVZrc-LqPowuBEGb5mgvKv8m6xIf4HxpLybrEh_gfGksAnaoc6PatLya3l3nkSin8VKsxPj5trgdrgWC4Xp9_r&_nc_ohc=n4p08QPZ9F0Q7kNvwGcXFcy&_nc_oc=Adqj9OhK83qKdy4TuftmKl0_-fzyhzve2D7jYLZVQy4ei9avp0sAYQbrjuDN3qjtFbE&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AMAeTUEEAAAA&_nc_gid=GHOqJKhtfiyrb53NJV1X7g&_nc_tpa=Q5bMBQGiefEEKffLI3PNIzaz563vbnuhAXdC_bW_GB9aEcON1QLokksDp5sCv8-3LMAuHJV59K12BOPTYQ&oh=00_Af9Lm3cZRlxMz3mHwvpAlBnDf4g2PUV0UBkmlxVWC9-hgg&oe=6A38EB4A",
+    "fb_post_id": "1993115404238126_1593963536069997"
   },
   {
     "orden": 4,
@@ -125,7 +130,9 @@
     "imagen_path": "E:\\ARCHIVOS\\plantillas\\-3 corporal\\34.png",
     "publicado": false,
     "imagen_repo_path": "semana/imagenes/post4.png",
-    "fb_programado": false
+    "fb_programado": true,
+    "fb_url_imagen": "https://scontent-sjc6-1.xx.fbcdn.net/v/t39.30808-6/725599515_1593963582736659_5581275882457016404_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=054031&_nc_eui2=AeFQy0ftFK2Txl42uIt19p8ZglnSHTy0WPaCWdIdPLRY9i5me15plbOqd0Pjfj7PfXHiAHzxEbY8A1q3xLhV6zTC&_nc_ohc=eTKOQIN0CgkQ7kNvwHFWI0Z&_nc_oc=AdqPSey5A6lQcDaTIH1RCAOFPKhZJlOoLlU640sbB8t6SUPAKUaQYBBsaqbw3CksXak&_nc_zt=23&_nc_ht=scontent-sjc6-1.xx&edm=AMAeTUEEAAAA&_nc_gid=DExXMfAp-6MUCwPBeBQGmQ&_nc_tpa=Q5bMBQEPOdKKkkcUV4SMB0sc7pT4kWfueQhOf1RYJDHlclbeqSfjWPG6O5dRQUku3e82pGbK8bdQ5rVhKw&oh=00_Af_8czjUv-5bgE8nMTJGoZ0Dig3hP_Jij81rqhBQOnYElA&oe=6A390E18",
+    "fb_post_id": "1993115404238126_1593963622736655"
   },
   {
     "orden": 99,
