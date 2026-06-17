@@ -311,7 +311,9 @@ def main():
                 if not entry.get('ig_container_id') and now >= ts_ig - 7200 and raw_url:
                     caption = get_caption(entry, 'ig')
                     ig_type = 'REELS' if es_video else 'IMAGE'
-                    cid = create_ig_container(raw_url, caption, ig_type)
+                    # Para imagenes: CDN de Facebook es mas estable que GitHub raw
+                    ig_url = (entry.get('fb_url_imagen') or raw_url) if not es_video else raw_url
+                    cid = create_ig_container(ig_url, caption, ig_type)
                     if cid:
                         entry['ig_container_id'] = cid
                         changed = True
