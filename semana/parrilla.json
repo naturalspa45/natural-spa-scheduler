@@ -28,8 +28,10 @@
     "imagen_path": "E:\\PLANTILLAS IA\\PARRILLA CONTENIDO\\FACEBOOK\\2026-06-12-FACIAL-1.png",
     "publicado": false,
     "imagen_repo_path": "semana/imagenes/manana_fb.png",
-    "fb_programado": false,
-    "ig_publicado": true
+    "fb_programado": true,
+    "ig_publicado": true,
+    "fb_url_imagen": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/726954982_1595809519218732_8065752251984369812_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=054031&_nc_eui2=AeGx8t7CjAtOj-mn47MJFOnc1w_xUpm2MSTXD_FSmbYxJF5o-Nqi_2ySKh7TEfpwFxlChXyeyOm7NhirIBTLXNJW&_nc_ohc=Cwh8lT9V09sQ7kNvwGGuAmR&_nc_oc=AdoHpA2LmqKMY36t1TTdHsqtPgcNaFir1DxuDCmpFjeWfNq4pPjyEcAXBucuJjF4QvI&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AMAeTUEEAAAA&_nc_gid=s5tWPSmKaEYbKBlf4rv9rQ&_nc_tpa=Q5bMBQHgR-z2tNA7rJEWpt_HB-A1K9rnZN1dSSdSOVdayFVk-9kBxlzCMt42InWkjgSa5dugxIjwg19KsA&oh=00_Af_L4iWd-WhD9GwZh1BWGr17hDjFBm232GZCs4Q9ezOTQQ&oe=6A3BB0DB",
+    "fb_post_id": "1993115404238126_1595809632552054"
   },
   {
     "orden": 2,
@@ -92,8 +94,10 @@
     "imagen_path": "E:\\PLANTILLAS IA\\PARRILLA CONTENIDO\\FACEBOOK\\2026-06-15-PIEL-SANA-1.png",
     "publicado": false,
     "imagen_repo_path": "semana/imagenes/tarde_fb.png",
-    "fb_programado": false,
-    "ig_publicado": true
+    "fb_programado": true,
+    "ig_publicado": true,
+    "fb_url_imagen": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/727381083_1595809702552047_1812182973652435284_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=054031&_nc_eui2=AeF4XNP6n7zLZtjlWy3yZ-YGHiG4HYsEFvgeIbgdiwQW-Dnnzyj7DzsHU5bUo6n9OdVGQIeeboCW51-Ab02HMCyK&_nc_ohc=Zkm8A6_5H9IQ7kNvwE-C_Pm&_nc_oc=AdqNIVsOXNL5jc3eY0SS8fgqBK5eIaRrifUCxU5SODbSEsI7ZOVKZldTpPzdfOoft3Y&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AMAeTUEEAAAA&_nc_gid=hL1-jRc-iaFVNNxU7btCpA&_nc_tpa=Q5bMBQFl17Ce3rT6rZdeAxmGROGtBHXK1RGISxfdw2HgA9MEobY14TqUHYyqjUBD8Gm3kQgfMGWaUWulgw&oh=00_Af-p2meuf_tSNoey2ilHyDBxhmpokFw8RW0UbiNX1NZbXA&oe=6A3BA55B",
+    "fb_post_id": "1993115404238126_1595809765885374"
   },
   {
     "orden": 4,
