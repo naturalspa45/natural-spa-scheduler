@@ -137,7 +137,8 @@
     "imagen_repo_path": "semana/imagenes/post4.png",
     "fb_programado": true,
     "fb_url_imagen": "https://scontent-hkg1-1.xx.fbcdn.net/v/t39.30808-6/726373290_1594774449322239_3540386140452881446_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=054031&_nc_eui2=AeHGIDzYELoJbuDpFR1jz16VKB7RGf_cXLYoHtEZ_9xctr1_zKkMj1AS7EBShpQRuWSHz9oer1S_7WoHTY72Rj7v&_nc_ohc=jek8T7ztaM8Q7kNvwGlimkn&_nc_oc=AdoRemITwx_TyHn-aP-2DoiBJe57GXRIppAXd4Wof1hGCjKJkpf2iFWFONrpcC92hR0&_nc_zt=23&_nc_ht=scontent-hkg1-1.xx&edm=AMAeTUEEAAAA&_nc_gid=6iDlCT7cNn5k5pqsp4q2uA&_nc_tpa=Q5bMBQEIKIP53I559WLmdie0gT7AfiYwZBj4Uz7Sbdd_ZCNIMBsaS3MMoQQFa7nq2qyrFJtIFO4IWxU2aA&oh=00_Af_dYt_3pZ2uV4Vk7vT3lq6XdwWYlDD0iNGYoWvDmfEnIA&oe=6A3A0851",
-    "fb_post_id": "1993115404238126_1594774515988899"
+    "fb_post_id": "1993115404238126_1594774515988899",
+    "ig_container_id": "18448101184137444"
   },
   {
     "orden": 99,
@@ -252,6 +253,7 @@
     "hashtags": "",
     "imagen_path": "E:\\PLANTILLAS IA\\MICROPIGMENTACION\\HISTORY\\2026-06-12-MICROPIGMENTACION-1.png",
     "publicado": false,
-    "imagen_repo_path": "semana/imagenes/historia_viernes.png"
+    "imagen_repo_path": "semana/imagenes/historia_viernes.png",
+    "ig_story_publicado": true
   }
 ]
