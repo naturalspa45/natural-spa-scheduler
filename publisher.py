@@ -197,6 +197,48 @@ def create_ig_container(media_url, caption=None, media_type='IMAGE'):
     return None
 
 
+def get_ig_peak_hours_col():
+    """Consulta Meta API para detectar horas pico reales de seguidores IG.
+    Retorna (hora_manana_COL, hora_tarde_COL) o (None, None) si falla."""
+    try:
+        r = requests.get(
+            f"https://graph.facebook.com/{VERSION}/{IG_ID}/insights",
+            params={
+                'metric': 'online_followers',
+                'period': 'lifetime',
+                'access_token': PAGE_TOKEN
+            },
+            timeout=30
+        )
+        if not r.ok:
+            print(f"  insights API {r.status_code}: {r.text[:80]}")
+            return None, None
+        data = r.json().get('data', [])
+        if not data or not data[0].get('values'):
+            return None, None
+        # Acumular seguidores por hora UTC sumando todos los dias disponibles
+        acum = {}
+        for v in data[0]['values']:
+            for h_str, cnt in v.get('value', {}).items():
+                h = int(h_str)
+                acum[h] = acum.get(h, 0) + cnt
+        # Convertir UTC a COL (UTC-5)
+        col = {}
+        for h_utc, cnt in acum.items():
+            h_col = (h_utc - 5) % 24
+            col[h_col] = col.get(h_col, 0) + cnt
+        # Mejor hora manana (6-11h COL) y tarde (14-21h COL)
+        man = {h: v for h, v in col.items() if 6 <= h <= 11}
+        tar = {h: v for h, v in col.items() if 14 <= h <= 21}
+        pico_m = max(man, key=man.get) if man else None
+        pico_t = max(tar, key=tar.get) if tar else None
+        print(f"  Pico IG real — manana: {pico_m}h COL | tarde: {pico_t}h COL")
+        return pico_m, pico_t
+    except Exception as ex:
+        print(f"  get_ig_peak_hours error: {ex}")
+        return None, None
+
+
 def wait_finished(container_id, tries=12):
     """Espera hasta que el contenedor de IG termine de procesar."""
     for _ in range(tries):
@@ -272,6 +314,27 @@ def main():
             print("Sin SI en Gmail todavia. Nada que publicar.")
             return
 
+    # Detectar horas pico reales de seguidores en tiempo real
+    print("Consultando horas pico reales desde Meta API...")
+    pico_manana, pico_tarde = get_ig_peak_hours_col()
+    if pico_manana is None:
+        pico_manana = 10  # fallback: Sprout Social / Buffer 9.6M posts benchmark
+        print("  Fallback manana: 10h COL (Sprout Social)")
+    if pico_tarde is None:
+        pico_tarde = 19   # fallback: TikTok Apaya 7.1M posts benchmark
+        print("  Fallback tarde: 19h COL (TikTok Apaya)")
+    # Publicar 35 min antes del pico para que el algoritmo indexe primero
+    pub_manana_min = pico_manana * 60 - 35
+    pub_tarde_min  = pico_tarde * 60 - 35
+    print(f"  Publica manana a las {pub_manana_min//60}:{pub_manana_min%60:02d} COL (pico: {pico_manana}:00)")
+    print(f"  Publica tarde a las  {pub_tarde_min//60}:{pub_tarde_min%60:02d} COL (pico: {pico_tarde}:00)")
+
+    # Tiempo actual Colombia (UTC-5)
+    now_utc_dt  = datetime.datetime.utcnow()
+    now_col_dt  = now_utc_dt - datetime.timedelta(hours=5)
+    now_col_min = now_col_dt.hour * 60 + now_col_dt.minute
+    today_col   = now_col_dt.strftime('%Y-%m-%d')
+
     now = now_ts()
     changed = False
 
@@ -282,6 +345,62 @@ def main():
         raw_url   = f"{RAW_BASE}/{repo_path}" if repo_path else ''
 
         if tipo == 'feed':
+            turno = entry.get('turno')  # 'manana' o 'tarde' — nuevo sistema dinamico
+
+            # === MODO TURNO: horas pico en tiempo real (entradas nuevas con campo turno) ===
+            if turno:
+                if entry.get('fecha') != today_col:
+                    continue  # No es hoy
+                target_min = pub_manana_min if turno == 'manana' else pub_tarde_min
+                if now_col_min < target_min:
+                    continue  # Aun no es la hora
+                # Timestamp Meta API: pico de hoy en UTC
+                pico_h = pico_manana if turno == 'manana' else pico_tarde
+                pico_col_h = now_col_dt.replace(hour=pico_h, minute=0, second=0, microsecond=0)
+                pico_utc_h = pico_col_h + datetime.timedelta(hours=5)
+                ts_dynamic = int(pico_utc_h.timestamp())
+                if ts_dynamic <= now_ts():
+                    ts_dynamic = now_ts() + 120  # pico ya paso, publicar ya
+                print(f"Turno {turno} {entry.get('fecha')} — pico {pico_h}:00 COL")
+                # FACEBOOK (solo si este entry es FB-only)
+                if not entry.get('fb_programado') and repo_path:
+                    print(f"  Publicando FB turno {turno}")
+                    msg = get_caption(entry, 'fb')
+                    es_vid = is_video(raw_url)
+                    if es_vid:
+                        src = ensure_local(local_img, raw_url)
+                        fb_id = schedule_fb_video(src, msg, ts_dynamic) if src else None
+                    else:
+                        src = ensure_local(local_img, raw_url) or raw_url
+                        photo_id, cdn_url = upload_image_to_fb(src)
+                        fb_id = schedule_fb_post(msg, photo_id, ts_dynamic) if photo_id else None
+                        if photo_id:
+                            entry['fb_url_imagen'] = cdn_url
+                    if fb_id:
+                        entry['fb_programado'] = True
+                        entry['fb_post_id'] = fb_id
+                        entry['hora_col_publicada'] = f"{pub_manana_min//60}:{pub_manana_min%60:02d}" if turno == 'manana' else f"{pub_tarde_min//60}:{pub_tarde_min%60:02d}"
+                        changed = True
+                        print(f"  FB OK: {fb_id}")
+                # INSTAGRAM (solo si este entry es IG-only)
+                if not entry.get('ig_publicado'):
+                    print(f"  Publicando IG turno {turno}")
+                    caption = get_caption(entry, 'ig')
+                    es_vid = is_video(raw_url)
+                    ig_url = entry.get('fb_url_imagen') or raw_url
+                    ig_type = 'REELS' if es_vid else 'IMAGE'
+                    cid = create_ig_container(ig_url, caption, ig_type)
+                    if cid and wait_finished(cid):
+                        post_id = publish_ig(cid)
+                        if post_id:
+                            entry['ig_publicado'] = True
+                            entry['ig_post_id'] = post_id
+                            entry['ig_container_id'] = cid
+                            changed = True
+                            print(f"  IG OK: {post_id}")
+                continue  # No procesar bloque timestamp para esta entrada
+
+            # === MODO TIMESTAMP: horas fijas (entradas legadas con timestamp en parrilla) ===
             formato = entry.get('formato', 'IMAGEN UNICA').upper()
             es_video = is_video(raw_url)
 
