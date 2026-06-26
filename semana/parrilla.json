@@ -196,8 +196,11 @@
     "imagen_path": "E:\\PLANTILLAS IA\\PARRILLA CONTENIDO\\FACEBOOK\\2026-06-12-FACIAL-2.png",
     "publicado": false,
     "imagen_repo_path": "semana/imagenes/jueves_manana_fb.png",
-    "fb_programado": false,
-    "ig_publicado": true
+    "fb_programado": true,
+    "ig_publicado": true,
+    "fb_url_imagen": "https://scontent-iad6-1.xx.fbcdn.net/v/t39.30808-6/731338967_1602141551918862_2630344306510251958_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=054031&_nc_eui2=AeExne9E_mKXZNT1WqqHinehoJkpDb8nssCgmSkNvyeywBzaiX8VpFmSbpSXoebLb4Y842cuErOh8f82lDclfJoU&_nc_ohc=vjdlRRJpux4Q7kNvwE4L0nX&_nc_oc=AdqPMhO4__4G4rUVwqWHzeOhhzykfAYG-5HoG42j8S9w6SNJcYBvEvBP5SCzobSFJis&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&edm=AMAeTUEEAAAA&_nc_gid=fhfr6lLNjTsCo2W_h0nY3g&_nc_tpa=Q5bMBQEKTWzsab_50fQOHp6bcR2QSxSWUNPE3xLolmSAcOAqri6fGlZ29T5yTl-7zkuEA_nNbtEwEtrDEw&oh=00_Af-nsnP2U_afh_HENxd_zZa-QVI_mNgUHt4mD9MHJtSGtw&oe=6A44A3DD",
+    "fb_post_id": "1993115404238126_1602141621918855",
+    "hora_col_publicada": "9:25"
   },
   {
     "orden": 8,
@@ -219,7 +222,9 @@
     "publicado": false,
     "imagen_repo_path": "semana/imagenes/jueves_manana_ig.png",
     "fb_programado": true,
-    "ig_publicado": false
+    "ig_publicado": true,
+    "ig_post_id": "18097863536589353",
+    "ig_container_id": "18449423812137444"
   },
   {
     "orden": 10,
@@ -335,7 +340,7 @@
     "imagen_path": "E:\\PLANTILLAS IA\\PARRILLA CONTENIDO\\HISTORIAS\\2026-06-12-FACIAL-1.png",
     "publicado": false,
     "imagen_repo_path": "semana/imagenes/historia_lunes.png",
-    "ig_story_publicado": false
+    "ig_story_publicado": true
   },
   {
     "orden": 14,
