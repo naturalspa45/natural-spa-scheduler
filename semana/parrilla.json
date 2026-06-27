@@ -131,8 +131,9 @@
     "publicado": false,
     "imagen_repo_path": "semana/imagenes/tarde_ig.png",
     "fb_programado": true,
-    "ig_publicado": false,
-    "ig_container_id": "18449461069137444"
+    "ig_publicado": true,
+    "ig_container_id": "18449461069137444",
+    "ig_post_id": "17860693110647612"
   },
   {
     "orden": 5,
