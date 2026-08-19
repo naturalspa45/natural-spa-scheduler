@@ -24,6 +24,7 @@ FB_EXT = {
     "DEPILACION":       "En Natural Spa evaluamos tu tipo de piel antes de cualquier tratamiento de depilacion. Sistemas actualizados, protocolos de seguridad estrictos. El objetivo: que no tengas que volver a preocuparte por eso.",
     "PRODUCTOS":        "Los productos de Natural Spa se eligen con criterio clinico, no por marca ni comision. Si algo no funciona para nuestras clientas, no lo recomendamos.",
     "RELAJANTES":       "Los tratamientos relajantes de Natural Spa combinan tecnicas de distintas escuelas terapeuticas. Ambiente controlado, sin prisa, sin protocolo de fabrica.",
+    "PIEL-SANA":        "En Natural Spa tratamos manchas, acne, piel opaca y falta de hidratacion con protocolos personalizados segun tu tipo de piel. Sin promesas vacias — resultados reales desde la primera sesion.",
     "DEFAULT":          "Natural Spa - estetica profesional en Pereira con anos de trayectoria. Cada servicio lo aplican profesionales certificados con protocolos actualizados.",
 }
 
