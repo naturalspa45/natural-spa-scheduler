@@ -113,7 +113,7 @@
     "turno": "tarde",
     "dia": "jueves",
     "fecha": "2026-08-20",
-    "fb_programado": false,
+    "fb_programado": true,
     "ig_publicado": true,
     "imagen_repo_path": "semana/imagenes/2026-08-20_tarde_fb.png",
     "imagen_fuente": "2026-06-12-FACIAL-3.png",
@@ -121,7 +121,10 @@
     "hook": "El secreto de una piel hermosa empieza con el cuidado correcto.",
     "cuerpo": "Nuestras esteticistas certificadas analizan tu piel y crean un tratamiento personalizado. Resultados visibles, sin protocolos genericos.",
     "cta": "Reserva tu cita hoy. Escribenos ahora.",
-    "hashtags": "#NaturalSpa #Facial #HidratacionProfunda #PielSaludable #Estetica #Pereira"
+    "hashtags": "#NaturalSpa #Facial #HidratacionProfunda #PielSaludable #Estetica #Pereira",
+    "fb_url_imagen": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/779463685_1654948099971540_2155305031655724105_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=054031&_nc_eui2=AeHv_NC5xcmFt85WYLVJtdXbD9V8d5QGUTwP1Xx3lAZRPNPIEkjrWMAxkPrNedHO3moqkudq01rJ58pSIHUHJhyg&_nc_ohc=MtAzaFh1vvgQ7kNvwHUu3PN&_nc_oc=Adpo7dwLm8C36qWm1mJlunJfAG0Az2KEGeU6Aw57Mx6OZgW3VI5CnBtZlstjKipAtT0&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AMAeTUEEAAAA&_nc_gid=rZyax0zb-whvhJQCJeqsIQ&_nc_tpa=Q5bMBQI1yB6sQvS487GHezeiRWRSsDDq12eNprdfktAd3f5LONr8fl_wsPDWFPCoUxHGAmpw-9pSascp7w&oh=00_AQENAVG2nTTZQo1nEO9cNEyO0xanUnSd61MqR_B9NyMizA&oe=6A8D73F9",
+    "fb_post_id": "1993115404238126_1654948129971537",
+    "hora_col_publicada": "13:25"
   },
   {
     "orden": 8,
@@ -130,14 +133,16 @@
     "dia": "jueves",
     "fecha": "2026-08-20",
     "fb_programado": true,
-    "ig_publicado": false,
+    "ig_publicado": true,
     "imagen_repo_path": "semana/imagenes/2026-08-20_tarde_ig.png",
     "imagen_fuente": "2026-06-12-FACIAL-3.png",
     "servicio": "FACIAL",
     "hook": "El secreto de una piel hermosa empieza con el cuidado correcto.",
     "cuerpo": "Nuestras esteticistas certificadas analizan tu piel y crean un tratamiento personalizado. Resultados visibles, sin protocolos genericos.",
     "cta": "Reserva tu cita hoy. Escribenos ahora.",
-    "hashtags": "#NaturalSpa #Facial #HidratacionProfunda #PielSaludable #Estetica #Pereira"
+    "hashtags": "#NaturalSpa #Facial #HidratacionProfunda #PielSaludable #Estetica #Pereira",
+    "ig_post_id": "17971280171934612",
+    "ig_container_id": "18459800578137444"
   },
   {
     "orden": 9,
