@@ -76,7 +76,7 @@
     "turno": "manana",
     "dia": "jueves",
     "fecha": "2026-08-20",
-    "fb_programado": false,
+    "fb_programado": true,
     "ig_publicado": true,
     "imagen_repo_path": "semana/imagenes/2026-08-20_manana_fb.png",
     "imagen_fuente": "2026-06-12-FACIAL-2.png",
@@ -84,7 +84,10 @@
     "hook": "Tu piel merece el mejor cuidado, y hoy puede ser el dia.",
     "cuerpo": "En Natural Spa disenamos un protocolo facial exclusivo para ti. Analisis personalizado, limpieza profunda e hidratacion real desde la primera sesion.",
     "cta": "Escribenos y reserva tu cita. Te esperamos.",
-    "hashtags": "#NaturalSpa #Facial #CuidadoDePiel #SkinCare #Estetica #Pereira #BeautyColombia"
+    "hashtags": "#NaturalSpa #Facial #CuidadoDePiel #SkinCare #Estetica #Pereira #BeautyColombia",
+    "fb_url_imagen": "https://scontent-sea5-1.xx.fbcdn.net/v/t39.30808-6/775844848_1654577730008577_5993317245739846601_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=054031&_nc_eui2=AeEAIiZG26hqjJQdIAZd1YYn5VNMjtL7nNflU0yO0vuc11LcdNhbaMTTAcPdVyXhIBbmqQTFMJ9cM7BPlG5uruzY&_nc_ohc=80QGSrae6vkQ7kNvwG8xGgv&_nc_oc=AdqynT0z83g3GbFEuxuUQV4qauOzGgXH21ewLA0AUrcAGH5LmbJFaptaRiOrnnRCZ1M&_nc_zt=23&_nc_ht=scontent-sea5-1.xx&edm=AMAeTUEEAAAA&_nc_gid=JL0oB_XO52e4U1xVEfrwyw&_nc_tpa=Q5bMBQKkLMQiBxsEr0lbiB7Ardf61ZM2hbz9O7SO1w1bbQGt44UcmDdvevX93Ky5uzMyidde0tXTkUD4eg&oh=00_AQEX8peE33X-k3_XmHU9Uy9fZIryYKx1dbs0iYKgkD0QsQ&oe=6A8CEF81",
+    "fb_post_id": "1993115404238126_1654577963341887",
+    "hora_col_publicada": "9:25"
   },
   {
     "orden": 6,
@@ -93,14 +96,16 @@
     "dia": "jueves",
     "fecha": "2026-08-20",
     "fb_programado": true,
-    "ig_publicado": false,
+    "ig_publicado": true,
     "imagen_repo_path": "semana/imagenes/2026-08-20_manana_ig.png",
     "imagen_fuente": "2026-06-12-FACIAL-2.png",
     "servicio": "FACIAL",
     "hook": "Tu piel merece el mejor cuidado, y hoy puede ser el dia.",
     "cuerpo": "En Natural Spa disenamos un protocolo facial exclusivo para ti. Analisis personalizado, limpieza profunda e hidratacion real desde la primera sesion.",
     "cta": "Escribenos y reserva tu cita. Te esperamos.",
-    "hashtags": "#NaturalSpa #Facial #CuidadoDePiel #SkinCare #Estetica #Pereira #BeautyColombia"
+    "hashtags": "#NaturalSpa #Facial #CuidadoDePiel #SkinCare #Estetica #Pereira #BeautyColombia",
+    "ig_post_id": "18466821304112039",
+    "ig_container_id": "18459723442137444"
   },
   {
     "orden": 7,
