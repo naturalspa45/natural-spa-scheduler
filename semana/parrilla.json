@@ -632,7 +632,7 @@
     "turno": "tarde",
     "dia": "martes",
     "fecha": "2026-09-01",
-    "fb_programado": false,
+    "fb_programado": true,
     "ig_publicado": true,
     "imagen_repo_path": "semana/imagenes/2026-09-01_tarde_fb.png",
     "imagen_fuente": "2026-06-15-PIEL-SANA-10.png",
@@ -640,7 +640,10 @@
     "hook": "Una piel sana no es suerte. Es la tecnica correcta aplicada con cuidado.",
     "cuerpo": "En Natural Spa personalizamos cada protocolo para mejorar la textura, luminosidad y salud de tu piel. Resultados reales desde la primera sesion.",
     "cta": "Escribenos hoy. Tu piel te lo va a agradecer.",
-    "hashtags": "#NaturalSpa #PielSana #HidratacionProfunda #SkincareColombia #Estetica #Pereira"
+    "hashtags": "#NaturalSpa #PielSana #HidratacionProfunda #SkincareColombia #Estetica #Pereira",
+    "fb_url_imagen": "https://scontent-sjc3-1.xx.fbcdn.net/v/t39.30808-6/793158928_1666715272128156_5824624825867044323_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=054031&_nc_eui2=AeHXg0nfb7K_ffsjzHlrUYXp-c1l11uadXv5zWXXW5p1ez1QIMsi56jcKZtn0_TVGznfvsXGyeansKQA1mdwtryP&_nc_ohc=201lQ99NFmoQ7kNvwFtGdaC&_nc_oc=Adr4ejd-oc_h3QJJ9fj1ZKBI8p7cuRvVRSeaSusJEBQX879q5E6BddcJneJq-XV8ED4&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&edm=AMAeTUEEAAAA&_nc_gid=OaI9A2QOlv0aCVd9ECLyvQ&_nc_tpa=Q5bMBQIfrF9Zn8v_95k9wUTfv9UAuYi_U1PSYaTkM32-r7CWBOXndkPNa4GsnGVsyKEf9cRgZ-gyJRRVGg&oh=00_AQKAuNh1Eh2M8HrMc2j12gR2R4c3X_JKzpJMI2tgimhx2w&oe=6A9D2AA1",
+    "fb_post_id": "1993115404238126_1666715378794812",
+    "hora_col_publicada": "18:25"
   },
   {
     "orden": 31,
@@ -649,13 +652,15 @@
     "dia": "martes",
     "fecha": "2026-09-01",
     "fb_programado": true,
-    "ig_publicado": false,
+    "ig_publicado": true,
     "imagen_repo_path": "semana/imagenes/2026-09-01_tarde_ig.png",
     "imagen_fuente": "2026-06-15-PIEL-SANA-10.png",
     "servicio": "PIEL-SANA",
     "hook": "Una piel sana no es suerte. Es la tecnica correcta aplicada con cuidado.",
     "cuerpo": "En Natural Spa personalizamos cada protocolo para mejorar la textura, luminosidad y salud de tu piel. Resultados reales desde la primera sesion.",
     "cta": "Escribenos hoy. Tu piel te lo va a agradecer.",
-    "hashtags": "#NaturalSpa #PielSana #HidratacionProfunda #SkincareColombia #Estetica #Pereira"
+    "hashtags": "#NaturalSpa #PielSana #HidratacionProfunda #SkincareColombia #Estetica #Pereira",
+    "ig_post_id": "18072228146708430",
+    "ig_container_id": "18462052096137444"
   }
 ]
