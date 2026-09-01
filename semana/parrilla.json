@@ -595,7 +595,7 @@
     "turno": "manana",
     "dia": "martes",
     "fecha": "2026-09-01",
-    "fb_programado": false,
+    "fb_programado": true,
     "ig_publicado": true,
     "imagen_repo_path": "semana/imagenes/2026-09-01_manana_fb.png",
     "imagen_fuente": "2026-06-15-PIEL-SANA-9.png",
@@ -603,7 +603,10 @@
     "hook": "Tu piel sana es posible, y no necesitas adivinar como lograrlo.",
     "cuerpo": "Manchas, acne, piel opaca o falta de luminosidad — en Natural Spa disenamos el protocolo exacto para tu piel. Sin promesas vacias.",
     "cta": "Escribenos y agenda tu valoracion sin costo.",
-    "hashtags": "#NaturalSpa #PielSana #SkinCare #Manchas #Acne #Estetica #Pereira"
+    "hashtags": "#NaturalSpa #PielSana #SkinCare #Manchas #Acne #Estetica #Pereira",
+    "fb_url_imagen": "https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-6/793204137_1666356308830719_4916616314485386820_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=054031&_nc_eui2=AeG8uVavPd1X0lxmbgQFSdziTosZos93CQ1Oixmiz3cJDfdgoEXtgtlGNnBXJjNV9ut_yDtyvEUgyVzIMRMzTubF&_nc_ohc=yuUiiuCEghMQ7kNvwHa4h5i&_nc_oc=AdrY9rq2KuUzZ8x4fUaE0HpFNhwC9CQPIJy2sdtF72pUJ_kjlDKZugV85psGyA-tPNk&_nc_zt=23&_nc_ht=scontent-ord5-1.xx&edm=AMAeTUEEAAAA&_nc_gid=BgT3OgPQpvNv11Kc5QBnKg&_nc_tpa=Q5bMBQIFGmh3jK1dJqBDY6zknFvgB-N_QmUafwi3GHhta7sIVn7fhL9AYAtx1Vp7Zc-EN8ftQHE4M-J5Kw&oh=00_AQKC3dyAd7-R8JqGibI7_C39TTfSROaDob1DJ1JHghzgVg&oe=6A9CD730",
+    "fb_post_id": "1993115404238126_1666356375497379",
+    "hora_col_publicada": "9:25"
   },
   {
     "orden": 29,
@@ -612,14 +615,16 @@
     "dia": "martes",
     "fecha": "2026-09-01",
     "fb_programado": true,
-    "ig_publicado": false,
+    "ig_publicado": true,
     "imagen_repo_path": "semana/imagenes/2026-09-01_manana_ig.png",
     "imagen_fuente": "2026-06-15-PIEL-SANA-9.png",
     "servicio": "PIEL-SANA",
     "hook": "Tu piel sana es posible, y no necesitas adivinar como lograrlo.",
     "cuerpo": "Manchas, acne, piel opaca o falta de luminosidad — en Natural Spa disenamos el protocolo exacto para tu piel. Sin promesas vacias.",
     "cta": "Escribenos y agenda tu valoracion sin costo.",
-    "hashtags": "#NaturalSpa #PielSana #SkinCare #Manchas #Acne #Estetica #Pereira"
+    "hashtags": "#NaturalSpa #PielSana #SkinCare #Manchas #Acne #Estetica #Pereira",
+    "ig_post_id": "18558598603078015",
+    "ig_container_id": "18461986603137444"
   },
   {
     "orden": 30,
